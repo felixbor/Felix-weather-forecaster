@@ -35,17 +35,21 @@
     margin: 5px;
     padding-left: 30px;
     padding-right: 30px;
-    color: bisque;
+    color: rgb(12, 11, 11);
   }
   .cities {
     margin-left: 10px;
     padding-left: 10px;
     background-color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    
   }
   .day{
    display: flex;
    flex-direction: column;
    justify-content: space-between;
+   max-height: 350px;
 
 
   }
