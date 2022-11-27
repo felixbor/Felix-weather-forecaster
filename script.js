@@ -1,19 +1,19 @@
-var city = $("input").val()
+var cityin = $("input").val()
 var searchHistory =[];
 
 $(".btn").on("click", function(){
-    var city = $("input").val()
+    var cityin = $("input").val()
     if ($("input").val()!=="")
 
-    $(".cities").append(`<button>${city}</button>`);
+    $(".cities").append(`<button>${cityin}</button>`);
 
-addToHistory(city)
-console.log(city)
+addToHistory(cityin)
+console.log(cityin)
 fetchweather()
 
 })
-function addToHistory(city) {
-    searchHistory.push(city);
+function addToHistory(cityin) {
+    searchHistory.push(cityin);
     localStorage.setItem("search-history",JSON.stringify(searchHistory))
 }
 function fetchweather(){
@@ -27,8 +27,18 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=efb92
   .then(function (data) {
     console.log(data);
   });
- }
- /* fetch('api.openweathermap.org/data/2.5/forecast?q=Toronto&appid=efb9260cdf2128e3c8f818c36c80e344')
+  displaycurrentwether
+   function displaycurrentwether(data){
+    var {name}= data;
+    var {icon}= data.weather;
+    var {description}= data.weather;
+    console.log(name)
+    console.log(icon)
+    console.log(description)
+    //var {temp}= data
+   }
+ 
+ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Toronto&appid=efb9260cdf2128e3c8f818c36c80e344&units=metric')
     
   .then(function (response) {
       return response.json();
@@ -36,5 +46,4 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=efb92
     .then(function (data) {
       console.log(data);
     });
-
-*/
+}

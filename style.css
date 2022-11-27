@@ -40,7 +40,7 @@
   .cities {
     margin-left: 10px;
     padding-left: 10px;
-    background-color: antiquewhite;
+    
     display: flex;
     flex-direction: column;
     
