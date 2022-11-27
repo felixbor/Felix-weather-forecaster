@@ -1,0 +1,52 @@
+
+.custom {
+    background-color: rgb(59, 125, 125);
+    color: bisque;
+   font: weight 300px;
+   text-align: center;
+   font-size: 2rem;
+   
+
+}
+ .section {
+    display: flex;
+    justify-content: center;
+ }
+ .col-sm-3 {
+    height: 1000px;
+    padding-top: 10px;
+ }
+ .col-9 {
+    background-color: rgb(157, 157, 229);
+ }
+  .main {
+    height: 400px;
+    max-height: 500px;
+   
+  }
+  .forecast {
+    height: 400px;
+   
+  }
+  .form, .cities {
+    padding-left: 10px;
+  }
+  .btn {
+    margin: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: bisque;
+  }
+  .cities {
+    margin-left: 10px;
+    padding-left: 10px;
+    background-color: antiquewhite;
+  }
+  .day{
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+
+
+  }
+  
