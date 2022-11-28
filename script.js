@@ -27,7 +27,8 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=efb92
   .then(function (data) {
     console.log(data);
   });
-  displaycurrentwether
+}
+  displaycurrentwether(data)
    function displaycurrentwether(data){
     var {name}= data;
     var {icon}= data.weather;
@@ -36,8 +37,11 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=efb92
     console.log(icon)
     console.log(description)
     //var {temp}= data
-   }
+    $("#city").val()= name
+    document.getEleementByID("icon").src="http://openweathermap.org/img/wn/" + icon +"@2x.png"
+}
  
+   function fetchweather2(){
  fetch('https://api.openweathermap.org/data/2.5/forecast?q=Toronto&appid=efb9260cdf2128e3c8f818c36c80e344&units=metric')
     
   .then(function (response) {
