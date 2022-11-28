@@ -32,14 +32,23 @@ function fetchweather() {
 
 function displaycurrentwether(data) {
     var { name } = data;
-    var { icon } = data.weather;
-    var { description } = data.weather;
+    var { icon } = data.weather[0]  
+    var { description } = data.weather[0];
+    var {temp}= data.main
+    var {humidity}= data.main
+    var {speed}= data.wind
     console.log(name)
-    console.log(icon)
+    console.log(temp)
     console.log(description)
-    //var {temp}= data
-    $("#city").val() = name
-    document.getEleementByID("icon").src = "http://openweathermap.org/img/wn/" + icon + "@2x.png"
+    console.log(humidity)
+    console.log(speed)
+    
+    document.getElementById("city").innerText= name;
+    document.getElementById("temperature").innerText= temp+"°C";
+    document.getElementById("humidity").innerText= humidity+"%"
+    document.getElementById("wind").innerText= speed+"km/h";
+   // document.("city").innerText= name;
+    document.querySelector("#icon").src = "http://openweathermap.org/img/wn/" + icon + "@2x.png"
 }
 
 function fetchweather2() {

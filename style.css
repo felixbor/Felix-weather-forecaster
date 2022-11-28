@@ -39,7 +39,7 @@
   }
   .cities {
     margin-left: 10px;
-    padding-left: 10px;
+    margin-right: 10px;
     
     display: flex;
     flex-direction: column;
@@ -52,5 +52,13 @@
    max-height: 350px;
 
 
+  }
+  button {
+    border-radius: 7px;
+   background-color: rgb(187, 181, 181);
+   border-color: rgb(250, 237, 237);
+   box-shadow:  0 0px  5px white;
+   margin-top: 3px;
+   color: rgb(246, 250, 215);
   }
   
