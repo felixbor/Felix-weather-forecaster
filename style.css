@@ -1,4 +1,6 @@
-
+* {
+  font-family: 'Nerko One', cursive;
+}
 .custom {
     background-color: rgb(59, 125, 125);
     color: bisque;
@@ -7,6 +9,9 @@
    font-size: 2rem;
    
 
+} 
+.hide{
+display:none;
 }
  .section {
     display: flex;
@@ -50,6 +55,7 @@
    flex-direction: column;
    justify-content: space-between;
    max-height: 350px;
+   border-radius: 10px
 
 
   }
