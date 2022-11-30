@@ -1,19 +1,27 @@
-var day= dayjs().format("DD/MM/YYYY")
+var day = dayjs().format("DD/MM/YYYY")
 document.getElementById("currentdate").innerText = day
 var searchHistory = [];
 var block = document.querySelector(".hide");
 
 $(".search").on("click", function () {
     var cityin = $("input").val()
-    if ($("input").val() !== "")
+    const found = searchHistory.find(element => element == cityin)
+    if ($("input").val() !== "") {
+        if (found == undefined) {
+            $(".cities").append(`<button>${cityin}</button>`);
+            block.setAttribute("style", "display:block;");
 
-        $(".cities").append(`<button>${cityin}</button>`);
-    block.setAttribute("style", "display:block;");
-    addToHistory(cityin)
-    console.log(cityin)
-    fetchWeather(cityin)
 
+
+            addToHistory(cityin)
+            console.log(cityin)
+            fetchWeather(cityin)
+        } else { fetchWeather(cityin) }
+
+
+    }
 })
+//found == undefined)
 $(".clear").on("click", function () {
     localStorage.clear();
     searchHistory = [];
@@ -31,8 +39,8 @@ function getfromHistory() {
         searchHistory = []
     }
     else {
-searchHistory = JSON.parse(localStorage.getItem("search-history"))
-    } 
+        searchHistory = JSON.parse(localStorage.getItem("search-history"))
+    }
     for (let index = 0; index < searchHistory.length; index++) {
         const element = searchHistory[index];
         $(".cities").append(`<button>${element}</button>`);
@@ -42,11 +50,11 @@ searchHistory = JSON.parse(localStorage.getItem("search-history"))
 function selectcity(event) {
     block.setAttribute("style", "display:block;");
     var citybtn = event.target.textContent
-fetchWeather(citybtn)
+    fetchWeather(citybtn)
 
 
 }
-$(".cities").on("click",selectcity)
+$(".cities").on("click", selectcity)
 function fetchWeather(value) {
     // var cityname = $("input").val()
     console.log(value)
@@ -84,7 +92,7 @@ function displayCurrentWeather(data) {
 }
 
 function fetchWeather2(city) {
-    fetch('https://api.openweathermap.org/data/2.5/forecast?id='+city+'&appid=efb9260cdf2128e3c8f818c36c80e344&units=metric')
+    fetch('https://api.openweathermap.org/data/2.5/forecast?id=' + city + '&appid=efb9260cdf2128e3c8f818c36c80e344&units=metric')
 
         .then(function (response) {
             return response.json();
@@ -130,12 +138,12 @@ function displayForecastWeather(data) {
 
 function displayFiveDay(arr) {
     console.log(arr)
-    for(i=0;i<arr.length;i++) {
-        document.getElementById("date"+(i+1)).textContent = arr[i].dt_txt.split(" ")[0]
-        document.getElementById("image"+(i+1)).src ="http://openweathermap.org/img/wn/" + arr[i].weather[0].icon + "@2x.png"
-        document.getElementById("image"+(i+1)).setAttribute("style", "height: 100px; width: 100px;")
-        document.getElementById("temp"+(i+1)).textContent = arr[i].main.temp +"°C"
-        document.getElementById("wind"+(i+1)).textContent = " wind speed:" +arr[i].wind.speed +"km/h"
-        document.getElementById("humidity"+(i+1)).textContent =  " humidity:"+arr[i].main.humidity + "%"
+    for (i = 0; i < arr.length; i++) {
+        document.getElementById("date" + (i + 1)).textContent = arr[i].dt_txt.split(" ")[0]
+        document.getElementById("image" + (i + 1)).src = "http://openweathermap.org/img/wn/" + arr[i].weather[0].icon + "@2x.png"
+        document.getElementById("image" + (i + 1)).setAttribute("style", "height: 100px; width: 100px;")
+        document.getElementById("temp" + (i + 1)).textContent = arr[i].main.temp + "°C"
+        document.getElementById("wind" + (i + 1)).textContent = " wind speed:" + arr[i].wind.speed + "km/h"
+        document.getElementById("humidity" + (i + 1)).textContent = " humidity:" + arr[i].main.humidity + "%"
     }
 }
